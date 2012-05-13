@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require faye
 
 $(document).ready(function(){
   // join on enter
@@ -31,7 +32,7 @@ $(document).ready(function(){
     var host = window.location.host.split(':')[0];
     var container = $('div#msgs');
     
-    var client = new Faye.Client('http://172.17.21.169:9292/faye');
+    var client = new Faye.Client('http://172.17.21.200:9292/faye');
     var subscription = client.subscribe('/chat', function(evt) {
       var obj = evt;
       if (typeof obj != 'object') return;

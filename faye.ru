@@ -3,6 +3,7 @@ require 'eventmachine'
 require 'em-hiredis'
 
 server = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
+Faye::WebSocket.load_adapter('thin')
 
 EM.run {
   thin = Rack::Handler.get('thin')
